@@ -1,0 +1,6 @@
+com\controller\AdminController.class
+com\service\ProductService.class
+com\dao\ProductDAOImpl.class
+com\controller\UserController.class
+com\dao\ProductDAO.class
+com\model\Product.class
