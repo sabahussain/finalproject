@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flows:flow>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+<var name="p" class="com.model.Product"/> 
+<!-- Display the login page -->
+<view-state id="displayLoginView" view="/WEB-INF/views/display_login.jsp" model="login">
+<transition on="loginCredentialsEntered" to="performLoginAction"/>
+</view-state> 
+<action-state id="performLoginAction">
+<evaluate expression="loginService.performLogin(p)"/>
+<transition to="displayLoginSuccessView"/> 
+</action-state> 
+<view-state id="displayLoginSuccessView" view="/WEB-INF/views/display_login_success.jsp"/>
+<view-state id="displayLoginErrorView" view="/WEB-INF/views/display_login_error.jsp"/>
+</flow>
+</flows:flow>

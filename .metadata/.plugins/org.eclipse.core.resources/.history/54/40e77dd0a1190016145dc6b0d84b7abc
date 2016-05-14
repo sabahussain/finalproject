@@ -1,0 +1,52 @@
+package com.dao;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.service.*;
+import com.model.*;
+@Repository
+public class CartDAOImpl implements CartDAO{
+	
+	@Autowired
+    SessionFactory sessionFactory;
+
+    public Cart getCartById(int cartId){
+        Session session = sessionFactory.getCurrentSession();
+        return (Cart) session.get(Cart.class, cartId);
+    }
+
+    public List<Item> getItems() {
+		Session session=sessionFactory.openSession();
+		if(session!=null)
+		{
+			Transaction tx=session.beginTransaction();
+			List<Cart> cart=(List<Cart>) session.createQuery("FROM Cart").list();
+			List<Item> items=cart.get(0).getCartItems();
+			tx.commit();
+			session.close();
+			
+		return items;
+		}
+		return null;
+	}
+
+
+	public void addToCart(Cart c) {
+		Session session=sessionFactory.openSession();
+		if(session!=null)
+		{
+			Transaction tx=session.beginTransaction();
+			session.save(c);
+			tx.commit();
+			session.close();
+			
+		}
+
+}

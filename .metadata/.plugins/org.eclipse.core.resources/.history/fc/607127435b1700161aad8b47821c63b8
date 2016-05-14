@@ -1,0 +1,111 @@
+package com.controller;
+
+import com.model.Product;
+import com.service.ProductService;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.google.gson.Gson;
+
+@Controller
+public class AdminController {
+	@Autowired
+	ProductService ps;
+	
+	 @RequestMapping("/admin")
+	    public String listproduct(Model model) {
+	        Gson gson=new Gson();
+	    	List<Product> list = ps.listProduct();
+	    	System.out.println("list : "+list);
+	    	String json=gson.toJson(list);
+	    	System.out.println("inside controller");
+	    	System.out.println(json);
+	    	model.addAttribute("product", new Product());
+	        model.addAttribute("listproduct", json.toString());
+	    	return "admin";
+	    }
+
+	 @RequestMapping(value= "/admin/add")
+	    public String addProduct(@Valid @ModelAttribute("product") Product product,BindingResult res,Model model){
+		 if(res.hasErrors()) {
+	            return "admin";
+	        }
+		  if(product.getId() == 0){
+		         
+			    model.addAttribute("product", product);
+			     ps.addProduct(product);
+			      List<Product> p= (List<Product>)ps.listProduct();
+			    Gson gson=new Gson();
+			    String json=gson.toJson(p);
+			    System.out.println(json);
+			    model.addAttribute("listproduct",json);
+			      
+			        }else{
+			           
+			        model.addAttribute("product", product);
+			          ps.updateProduct(product);
+			       List<Product> p= (List<Product>) ps.listProduct();
+			      Gson gson=new Gson();
+			      String json=gson.toJson(p);
+			      System.out.println(json);
+			      model.addAttribute("listproduct",json);
+			        }
+			         
+	        return "redirect:/admin";
+	         
+	    }
+	     
+	    @RequestMapping("/remove/{id}")
+	    public String delete(@PathVariable("id") int id,@ModelAttribute("product")Product product, 
+	      BindingResult result, ModelMap model) {
+	      model.addAttribute("product", product);
+	    ps.removeProduct(id);
+	     List<Product> p= (List<Product>) ps.listProduct();
+	      Gson gson=new Gson();
+	     String json=gson.toJson(p);
+	     model.addAttribute("listproduct",json);
+	     return "redirect:/admin";
+	    }
+	   
+	    @RequestMapping("/edit/{id}")
+	    public String edit(@PathVariable("id") int id,@ModelAttribute("product")Product product, 
+	      BindingResult result, ModelMap model) {
+	      model.addAttribute("product", product);
+	      ps.getProductById(id);
+	      List<Product> p= (List<Product>)ps.listProduct();
+	Gson gson=new Gson();
+	String json=gson.toJson(p);
+	System.out.println(json);
+	model.addAttribute("listproduct",json);
+	Gson g=new Gson();
+	String j=g.toJson(product);
+	model.addAttribute("product",j);
+	model.addAttribute("listproduct",json);
+	        return "admin";
+	    }
+	  
+
+	}
+

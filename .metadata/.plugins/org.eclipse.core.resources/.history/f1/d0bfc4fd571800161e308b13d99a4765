@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow-2.4.xsd" >
+      
+<var name="order" class="com.model.Order" />
+
+     <action-state id="addCartToOrder">
+        <evaluate expression="cartDao.validate(requestParameters.cartId)" result="order.cart" />
+        <transition to="cartview" />
+    </action-state>
+
+    <view-state id="cartview" view="cartview.jsp" model="order">
+        <transition on="customerInfoCollected" to="shippingdetails" />
+    </view-state>
+
+    <view-state id="shippingdetails" view="shippingdetails.jsp" model="order">
+        <transition on="proceedorder" to="orderconfirmation" />
+        <transition on="backtocartview" to="cartview" />
+    </view-state>
+
+    <view-state id="orderconfirmation">
+        <transition on="Confirm" to="processOrder" />
+        <transition on="backtoshippingdetail" to="shippingdetail" />
+    </view-state>
+
+    <action-state id="processOrder">
+        <evaluate expression="ItemDaoImpl.removeAllCartItems(order.cart)" />
+        <transition to="thankscustomer" />
+    </action-state>
+
+
+    <view-state id="thankcustomer" model="order">
+        <transition to="endState" />
+    </view-state>
+
+    <end-state id="thankcustomer" />
+
+</flow>

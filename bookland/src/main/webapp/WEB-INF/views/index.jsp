@@ -68,8 +68,8 @@ div.desc {
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-         <li><a href="#">Contact</a></li>
+        <li class="active"><a href="index">Home</a></li>
+         <li><a href="contactus">Contact</a></li>
         <li class="dropdown">
            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Product<span class="caret"></span></a>
           <ul class="dropdown-menu">

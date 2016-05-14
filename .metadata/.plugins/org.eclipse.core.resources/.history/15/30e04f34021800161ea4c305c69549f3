@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flows:flow>
+<view-state id="start" view="productdetails">
+<transition on="submit" to="cartview"/>
+</view-state>
+</flows:flow>

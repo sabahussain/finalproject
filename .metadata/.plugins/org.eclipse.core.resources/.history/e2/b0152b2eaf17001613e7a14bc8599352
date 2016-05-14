@@ -1,0 +1,18 @@
+package com;
+
+public class LoginService {
+
+	public String performLogin(LoginCredentials loginCredentials){
+		 
+		if(loginCredentials.getLoginName() != null && loginCredentials.getLoginName().trim().equalsIgnoreCase("admin")
+		&& loginCredentials.getPassword() != null && loginCredentials.getPassword().trim().equalsIgnoreCase("admin"))
+		{
+		return "success";
+		} 
+		else 
+		{
+		return "failure";
+		}
+		}
+		 
+}

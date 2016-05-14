@@ -1,0 +1,13 @@
+package com.dao;
+
+import java.io.IOException;
+import java.util.List;
+
+import com.model.*;
+
+public interface CartDAO {
+	public Cart getCartById(int cartId);
+	 public List<Item> getItems();
+	 public void addToCart(Cart c);
+	
+}

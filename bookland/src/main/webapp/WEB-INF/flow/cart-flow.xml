@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow-2.4.xsd" >
+      
+     <on-start>
+	  <evaluate expression="cartService.initFlow()" result="flowScope.cart"/>
+	</on-start>
+ 
+	
+	<view-state id="addtocart" view="/WEB-INF/view/cartview.jsp" model="flowScope.cart">
+		 <transition on="forwardtoaddress" to="shippingdetails" />
+        <transition on="backtoproductdetail" to="productdetails" />
+	</view-state>
+	
+	
+	<view-state id="collectShippingDetail" view="/WEB-INF/view/shippingdetails.jsp" model="flowScope.cart">
+        <transition on="forwardtoorderconfirmation" to="orderconfirmation" />
+        <transition on="backtocartview" to="cartview" />
+    </view-state>
+    
+    <view-state id="OrderConfirmation" view="/WEB-INF/view/orderconfirmation.jsp" model="flowScope.cart">
+        <transition on="forwardtoorderconfirmation" to="orderconfirmation" />
+        <transition on="orderConfirmed" to="thankscustomer" />
+    </view-state>
+    
+    <view-state id="thankscustomer" model="flowScope.cart">
+        <transition to="endState" />
+    </view-state>
+
+    <end-state id="endState" />
+ 
+</flow>

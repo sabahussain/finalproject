@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flows:flow>
+<view-state id="start" view="productdetails">
+<transition on="addtocart" to="cartview"/>
+</view-state>
+<view-state id="addtocart" view="cartview">
+<transition on="proceedbillingaddress" to="billingaddress"/>
+</view-state>
+<view-state id="proceedbillingaddress" view="billingaddress">
+<transition on="proceedshippingaddress" to="shippingaddress"/>
+</view-state>
+<view-state id="proceedshippingaddress" view="finalview">
+</view-state>
+
+<end-state id="next"/>
+
+
+</flows:flow>

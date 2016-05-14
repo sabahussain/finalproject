@@ -1,0 +1,54 @@
+package com.dao;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.model.*;
+
+@Repository
+@Transactional
+public class UserDAOImpl implements UserDAO{
+	
+	
+	 @Autowired
+	 private SessionFactory sessionFactory;
+
+	public void addUser(User user) {
+		 Session session = sessionFactory.getCurrentSession();
+	        user.getShippingAddress().setUser(user);
+
+	        session.saveOrUpdate(user);
+	        session.saveOrUpdate(user.getShippingAddress());
+
+	        Cart newCart = new Cart();
+	        newCart.setUser(user);
+	        user.setCart(newCart);
+
+	        session.saveOrUpdate(user);
+	        session.saveOrUpdate(newCart);
+
+	        session.flush();
+		
+	}
+
+	public User getUserById(int customerId) {
+		 Session session = sessionFactory.getCurrentSession();
+	        return (User) session.get(User.class, customerId);
+	}
+
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public User getUserByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

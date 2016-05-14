@@ -1,0 +1,11 @@
+package com.dao;
+
+import java.io.IOException;
+import com.model.*;
+
+public interface CartDAO {
+	public Cart getCartById(int cartId);
+	 public void update(Cart cart);
+	 public Cart validate(int cartId) throws IOException;
+	
+}

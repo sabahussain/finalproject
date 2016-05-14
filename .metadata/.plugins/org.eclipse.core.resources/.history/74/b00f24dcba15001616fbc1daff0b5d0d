@@ -1,0 +1,44 @@
+package com.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import com.google.gson.Gson;
+
+@Controller
+public class UserController {
+	@RequestMapping("/")
+	public ModelAndView home()
+	{
+		ModelAndView m=new ModelAndView("index");
+		return m;
+	}
+	
+	@RequestMapping("/register")
+	public ModelAndView register()
+	{
+		ModelAndView m=new ModelAndView("register");
+		return m;
+	}
+	@RequestMapping("/login")
+	public ModelAndView login()
+	{
+		ModelAndView m=new ModelAndView("login");
+		return m;
+	}
+	@RequestMapping("/product")
+	public ModelAndView product()
+	{
+		ModelAndView m=new ModelAndView("product");
+		return m;
+	}
+	@RequestMapping("/productdetails")
+	public ModelAndView helloUser6(@RequestParam("id") int id)
+	{
+		ModelAndView m=new ModelAndView("productdetails");
+		m.addObject("id",id);
+		return m;
+	}
+
+}

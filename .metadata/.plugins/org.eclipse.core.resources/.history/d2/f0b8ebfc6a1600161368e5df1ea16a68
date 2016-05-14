@@ -1,0 +1,55 @@
+package com.controller.admincontroller;
+import com.model.Product;
+import com.service.ProductService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller
+public class AdminController {
+	@Autowired
+	ProductService ps;
+	
+	 @RequestMapping("/admin")
+	    public String listproduct(Model model) {
+	        model.addAttribute("product", new Product());
+	        model.addAttribute("listproduct", ps.listProduct());
+	        return "admin";
+	    }
+
+	 @RequestMapping(value= "/admin/add")
+	    public String addProduct(@ModelAttribute("product") Product p){
+	         
+	        if(p.getId() == 0){
+	           ps.addProduct(p);	      
+	           }else{
+	            ps.updateProduct(p);
+	        }
+	         
+	        return "redirect:/admin";
+	         
+	    }
+	     
+	    @RequestMapping("/remove/{id}")
+	    public String removeProduct(@PathVariable("id") int id){
+	         
+	      ps.removeProduct(id);
+	        return "redirect:/admin";
+	    }
+	  
+	    @RequestMapping("/edit/{id}")
+	    public String editProduct(@PathVariable("id") int id, Model model){
+	    	model.addAttribute("product", ps.getProductById(id));
+	        model.addAttribute("listproduct", ps.listProduct());
+	        return "product";
+	    }
+	     
+	   
+
+}

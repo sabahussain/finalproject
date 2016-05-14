@@ -1,0 +1,57 @@
+1462731750095	Move 'register.jsp' to 'views'
+1462731755077	Move 'index.jsp' to 'WEB-INF'
+1462731759807	Move 'index.jsp' to 'views'
+1462766580849	Rename resource 'com.controller'
+1462855833350	Move compilation unit
+1462855944778	Delete element
+1462858671128	Delete element
+1462889065155	Move 'admin.jsp' to 'admin'
+1462889151036	Copy file
+1462889160103	Delete element
+1462890057135	Delete element
+1463047106745	Delete element
+1463048250660	Move compilation unit
+1463048256564	Copy compilation unit
+1463048272817	Delete element
+1463048328682	Copy compilation unit
+1463048348012	Copy compilation unit
+1463048362438	Copy compilation unit
+1463048460110	Delete element
+1463048496469	Delete element
+1463048507947	Delete element
+1463060816605	Copy files
+1463060849140	Move 'Cart.java' to 'model'
+1463060862172	Move 'Item.java' to 'model'
+1463060867743	Move 'Order.java' to 'model'
+1463060874120	Move 'ShippingAddress.java' to 'model'
+1463061003508	Move 'cartview.jsp' to 'flow'
+1463064384837	Delete element
+1463081741774	Delete element
+1463083267973	Rename resource 'aboutus.jsp'
+1463109747309	Delete element
+1463111573184	Move compilation units
+1463111591991	Move compilation units
+1463111602963	Move compilation unit
+1463111623382	Move compilation units
+1463189733234	Delete element
+1463191794366	Move 'cartview.jsp' to 'views'
+1463192349158	Move 'Item.java' to 'service'
+1463192419492	Copy compilation unit
+1463192426682	Delete element
+1463192464271	Copy compilation unit
+1463192473619	Delete element
+1463199539937	Copy compilation unit
+1463199548512	Copy compilation unit
+1463199558910	Copy compilation unit
+1463199581210	Copy compilation unit
+1463199598320	Copy compilation unit
+1463199604405	Copy compilation unit
+1463199613945	Copy compilation unit
+1463199636286	Copy compilation unit
+1463199650687	Copy compilation unit
+1463199661358	Copy compilation unit
+1463199686364	Copy compilation unit
+1463205274439	Move 'orderconfirmation.jsp' to 'views'
+1463205277273	Move 'shippingdetails.jsp' to 'views'
+1463205280007	Move 'thankscustomer.jsp' to 'views'
+1463211544324	Delete element

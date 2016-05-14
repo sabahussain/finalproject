@@ -1,0 +1,13 @@
+package com.dao;
+import com.model.*;
+
+public interface ItemDAO {
+	void addCartItem(Item item);
+
+    void removeCartItem(Item item);
+
+    void removeAllCartItems(Cart cart);
+
+    Item getCartItemByProductId(int id);
+
+}

@@ -4,41 +4,58 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="Product")
 public class Product {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	int id;
-	 @Size(min=2, max=10, message="Your name should be between 3 - 10 characters.")
+	 @NotEmpty(message="Field can't be blank")
 	String name;
 	 @NotEmpty(message="Field can't be blank")
 	String author;
 	 @NotEmpty(message="Field can't be blank")
 	String description;
-	 @NotEmpty(message="Field can't be blank")
+	 @Digits(integer = 6, fraction = 0, message = "Enter only digits")
 	String price;
 	 @NotEmpty(message="Field can't be blank")
 	String category;
-	
+	 @Transient
+	 MultipartFile img;
 	public Product()
 	{
 		
 	}
 
-	public Product(String name, String author, String description, String price, String category) {
+	public Product(String name, String author, String description, String price, String category, MultipartFile img) {
 		super();
 		this.name = name;
 		this.author = author;
 		this.description = description;
 		this.price = price;
 		this.category = category;
+		this.img=img;
+	}
+
+
+	public MultipartFile getImg() {
+		return img;
+	}
+
+	public void setImg(MultipartFile img) {
+		this.img = img;
 	}
 
 	public int getId() {
@@ -92,7 +109,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", author=" + author + ", description=" + description
-				+ ", price=" + price + ", category=" + category + "]";
+				+ ", price=" + price + ", Category=" + category + "]";
 	}
    
 }

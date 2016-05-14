@@ -1,0 +1,30 @@
+package com.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.dao.*;
+import com.model.*;
+
+@Service
+public class ItemService {
+	 @Autowired
+	  ItemDAOImpl itemDaoImpl;
+
+	    public void addCartItem(Item cartItem){
+	    	itemDaoImpl.addCartItem(cartItem);
+	    }
+
+	    public void removeCartItem(Item cartItem){
+	    	itemDaoImpl.removeCartItem(cartItem);
+	    }
+
+	    public void removeAllCartItems(Cart cart){
+	    	itemDaoImpl.removeAllCartItems(cart);
+	    }
+
+	    public Item getCartItemByProductId(int id){
+	        return itemDaoImpl.getCartItemByProductId(id);
+	    }
+}
