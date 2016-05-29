@@ -11,14 +11,17 @@
 				            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 <mvc:annotation-driven />
 <context:component-scan base-package="com" />
+
+
     
 <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
 <property name="flowRegistry" ref="cartFlowRegistry" />
 </bean>
-<!-- Define FlowHandlerAdapter to handle Spring Web Flow request call.
-This is the Controller class in Spring Web Flow -->
+
 <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
 <property name="flowExecutor" ref="cartFlowExecutor" />
 </bean>
+
+
 
 </beans>

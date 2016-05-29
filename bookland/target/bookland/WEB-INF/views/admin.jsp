@@ -31,7 +31,7 @@
     Add a Product
 </h1>
 <c:url var="addAction" value="/admin/add" ></c:url>
-<form:form action="${addAction}" commandName="product" modelAttribute="product">
+<form:form action="${uploadImage}" commandName="product" modelAttribute="product" enctype="multipart/form-data">
 <table>
     <c:if test="${!empty product.name}">
     <tr>
@@ -84,26 +84,31 @@
         </td>
         <td>
             <form:input path="price" /><td><form:errors path="price" cssClass="error" cssStyle="color: #ff0000;"/></td>
-        </td>
+      
     </tr>
      <tr>
-        <td>
-            <form:label path="category">
-                <spring:message text="Category"/>
-            </form:label>
-        </td>
-        <td>
-            <form:input path="category" /><td><form:errors path="category" cssClass="error" cssStyle="color: #ff0000;"/></td>
-        </td>
-    </tr>
+<td><b>Category</b></td>
+ <td><form:select path="category">
+  <form:option value="" label="Select a Category" />
+ <form:options items="${category}" />
+  </form:select>
+   <td><form:errors path="category" cssClass="error" cssStyle="color: #ff0000;" /></td>
+ </tr>
+
     <tr>
         <td colspan="2">
             <c:if test="${!empty product.name}">
                 <input type="submit"
                     value="<spring:message text="Edit Product"/>" />
             </c:if>
-                <input type="submit"
-                    value="<spring:message text="Add Product"/>" />
+              <c:if test="${empty product.name}">
+                  <form:label path="img">
+                  <spring:message text="File to Upload"/>
+                 </form:label>
+                  <form:input path="img" type="file"/>
+                  <input type="submit"
+                  value="<spring:message text="Add Product"/>" />
+            </c:if>
          
         </td>
     </tr>

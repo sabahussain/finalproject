@@ -11,7 +11,7 @@ import com.model.User;
 import com.service.UserService;
 
 @Controller
-@RequestMapping("/customer/cart")
+@RequestMapping("/user/cart")
 public class CartController {
 	    @Autowired
 	    private UserService userService;
@@ -21,7 +21,7 @@ public class CartController {
 	        User user = userService.getCustomerByUsername(activeUser.getUsername());
 	        int cartId = user.getCart().getCartId();
 
-	        return "redirect:/customer/cart/" + cartId;
+	        return "redirect:/user/cart/" + cartId;
 	    }
 
 	    @RequestMapping("/{cartId}")

@@ -61,7 +61,7 @@
                          <input type="hidden" name="description" value={{x.description}}>
                           <input type="hidden" name="price" value={{x.price}}>
                           <input type="hidden" name="category" value={{x.category}}>
-                         <button type="submit"  class="btn btn-success btn-lg">
+                         <button type="submit"  name="addcart" class="btn btn-success btn-lg">
                          <span class="glyphicon glyphicon-plus-sign"></span>
                          </button>
                          </form>

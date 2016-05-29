@@ -162,11 +162,11 @@ h1 {
   <form name='loginForm' action="perform_login" method='POST'>
      <h1>BookLand</h1>
      <div class="form-group ">
-       <input type="text" class="form-control" placeholder="Username " id="username" name="username">
+       <input type="text" class="form-control" placeholder="Username " id="username" name="username" required>
        <i class="fa fa-user"></i>
      </div>
      <div class="form-group log-status">
-       <input type="password" class="form-control" placeholder="Password" id="password" name="password">
+       <input type="password" class="form-control" placeholder="Password" id="password" name="password" required>
        <i class="fa fa-lock"></i>
      </div>
       <span class="alert">Invalid Credentials</span>

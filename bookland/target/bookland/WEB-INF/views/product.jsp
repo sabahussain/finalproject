@@ -55,12 +55,12 @@
                        <td><i class="fa fa-inr"></i>{{ x.price}}</td>
                        <td>{{ x.category}}</td>
                          <td><form action="productdetails" method="post">
-                          <input type="hidden" name="id" value={{x.id}}/>
-                         <input type="hidden" name="name" value={{x.name}}/>
-                         <input type="hidden" name="author" value={{x.author}}/>
-                         <input type="hidden" name="description" value={{x.description}}/>
-                          <input type="hidden" name="price" value={{x.price}}/>
-                          <input type="hidden" name="category" value={{x.category}}/>
+                          <input type="hidden" name="id" value={{x.id}}>
+                         <input type="hidden" name="name" value={{x.name}}>
+                         <input type="hidden" name="author" value={{x.author}}>
+                         <input type="hidden" name="description" value={{x.description}}>
+                          <input type="hidden" name="price" value={{x.price}}>
+                          <input type="hidden" name="category" value={{x.category}}>
                          <button type="submit"  class="btn btn-success btn-lg">
                          <span class="glyphicon glyphicon-plus-sign"></span>
                          </button>

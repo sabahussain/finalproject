@@ -13,7 +13,7 @@ public class User {
 	
 	    @Id
 	    @GeneratedValue
-	    private int cutomerId;
+	    private int customerId;
 
 	    @NotEmpty (message = "The name must not be null")
 	    private String customerName;
@@ -38,12 +38,12 @@ public class User {
 	    @JoinColumn(name = "cartId")
 	    private Cart cart;
 
-	    public int getCutomerId() {
-	        return cutomerId;
+	    public int getCustomerId() {
+	        return customerId;
 	    }
 
 	    public void setCutomerId(int cutomerId) {
-	        this.cutomerId = cutomerId;
+	        this.customerId = cutomerId;
 	    }
 
 	    public String getCustomerName() {

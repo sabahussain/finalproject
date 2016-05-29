@@ -6,7 +6,10 @@
      <on-start>
 	  <evaluate expression="cartService.initFlow()" result="flowScope.cart"/>
 	</on-start>
- 
+    <view-state id="addcart" view="/WEB-INF/view/productdetails.jsp" model="flowScope.cart">
+		 <transition on="addtocart" to="cartview" />
+	</view-state>
+	
 	
 	<view-state id="addtocart" view="/WEB-INF/view/cartview.jsp" model="flowScope.cart">
 		 <transition on="forwardtoaddress" to="shippingdetails" />

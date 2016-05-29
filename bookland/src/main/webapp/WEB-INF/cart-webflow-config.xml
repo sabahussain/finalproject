@@ -13,6 +13,8 @@
 
    
     <context:component-scan base-package="com"/>
+    
+<import resource="cart-servlet-config.xml"/>
 
    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
@@ -21,7 +23,7 @@
 
     
     <bean id="flowController" class="org.springframework.webflow.mvc.servlet.FlowController">
-        <property name="flowExecutor" ref="cartflowExecutor"/>
+        <property name="flowExecutor" ref="cartFlowExecutor"/>
     </bean>
     
    <webflow:flow-executor id="cartFlowExecutor" flow-registry="cartFlowRegistry" />

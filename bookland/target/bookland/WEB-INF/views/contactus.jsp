@@ -28,7 +28,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Contact Us</title>
 </head>
-<body>
+<body style="background-color: #FFE4E1;">
 <jsp:include page="header.jsp"></jsp:include>
 <div class="container">
     <div class="row">

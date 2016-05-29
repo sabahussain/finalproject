@@ -48,8 +48,11 @@ body {
                 </tr>
          
         </table>
+        	<p ng-controller="cartController">
 
-        <a href="<spring:url value="/cartview" />" class="btn btn-primary">Add Product</a>
+        <a href="<spring:url value="/cartview" />" class="btn btn-primary" name="addtocart">Add Product</a>
+        
+        </p>
         </table>
 
 </body>
